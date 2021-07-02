@@ -1,0 +1,27 @@
+- name: ec2 launcher
+  hosts: localhost
+  gather_facts: yes
+  connection: local
+  tasks:
+  - name: launching ec2 instance
+    ec2:
+      instance_type: t2.micro
+      key_name: sankar-devops
+      image: ami-06b710d39da76565d
+      region: us-east-2
+      group: default
+      count: 1
+      wait: yes
+      assign_public_ip: yes
+      vpc_subnet_id: subnet-eb3cd196
+  - name: Wait 300 seconds, but only start checking after 60 seconds
+    wait_for_connection:
+      delay: 60
+      timeout: 180
+  - name: Gather IP Address of the machine
+    debug: 
+	   ipaddress=ansible_all_ipv4_addresses 
+  - name: Update Inventory File
+    lineinfile:
+     path: /etc/ansible/hosts
+     line: ${{ ipaddress }}
