@@ -30,6 +30,9 @@
         ansible_user: jenkins
         ansible_become: yes
     loop: "{{ ec2.instances }}"
+  - name: Wait for 180 seconds before second play execution    
+    wait_for:
+     timeout: 180
 - name: tomcat setup
   hosts: tomcat
   become: true
