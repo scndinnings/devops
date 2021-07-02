@@ -16,7 +16,7 @@
       key_name: sankar-devops
       image: ami-06b710d39da76565d
       region: us-east-2
-      group: default
+      group: All-Traffic
       count: 1
       wait: yes
       wait_timeout: 500
