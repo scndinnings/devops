@@ -30,8 +30,8 @@
         ansible_user: jenkins
         ansible_become: yes
     loop: "{{ ec2.instances }}"
----
-- hosts: tomcat
+- name: tomcat setup
+  hosts: tomcat
   become: true
   tasks:
   - name: Install Java
