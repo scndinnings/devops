@@ -5,13 +5,13 @@ stages {
 
   stage('Server Creation') {
        steps {
-         sh label: '', script: 'ansible-playbook /var/lib/jenkins/Ansible/ec2.yml'
+         sh label: '', script: 'ansible-playbook ./Ansible/ec2.yml'
 			}
    }
  
   stage('Unit Tomcat Setup') {
       steps {
-		sh label: '', script: '/var/lib/jenkins/Ansible/Tomcat.yml'
+		sh label: '', script: 'ansible-playbook ./Ansible/Tomcat.yml'
       
       }
  }
