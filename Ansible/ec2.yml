@@ -19,5 +19,7 @@
   - name: Add ip to inventory 
     add_host: 
         hostname: "{{ item.public_ip }}"
-        groupname: webservers
+        groupname: tag_Name_NginxDemo
+        ansible_user: jenkins
+        ansible_become: yes
     with_items: "{{ ec2.instances }}"
