@@ -19,8 +19,10 @@
     wait_for_connection:
       delay: 60
       timeout: 180
+  - debug:
+       var: ec2.instances[0].public_ip    
   - name: Update Inventory File
     become: true
     lineinfile:
      path: /etc/ansible/hosts
-     line: ${{ ansible_all_ipv4_addresses }}
+     line: ${{ var }}
