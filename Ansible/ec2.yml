@@ -1,7 +1,7 @@
 - name: ec2 launcher
   hosts: localhost
   gather_facts: yes
-  become: true
+  become: False
   connection: local
   tasks:
   - name: launching ec2 instance
