@@ -23,14 +23,14 @@
       assign_public_ip: yes
       vpc_subnet_id: subnet-eb3cd196
     register: ec2  
-  - name: Add ip to inventory 
+  - name: Add Instance IP into in-memory inventory file not into hosts file
     add_host: 
         hostname: "{{ item.public_ip }}"
         groupname: tomcat
         ansible_user: jenkins
         ansible_become: yes
     loop: "{{ ec2.instances }}"
-  - name: Wait for 180 seconds before second play execution    
+  - name: Wait for 180 seconds before tomcat setup play execution    
     wait_for:
      timeout: 180
 - name: tomcat setup
