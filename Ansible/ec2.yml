@@ -18,10 +18,7 @@
     wait_for_connection:
       delay: 60
       timeout: 180
-  - name: Gather IP Address of the machine
-    debug: 
-	   ipaddress=ansible_all_ipv4_addresses 
   - name: Update Inventory File
     lineinfile:
      path: /etc/ansible/hosts
-     line: ${{ ipaddress }}
+     line: ${{ ansible_all_ipv4_addresses }}
