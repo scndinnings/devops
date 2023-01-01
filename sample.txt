@@ -1,1 +1,2 @@
-dfdfdfdf
+This is just to understand VS features to support Github!
+Let's try to add another branch Feature3 to check how it works..
